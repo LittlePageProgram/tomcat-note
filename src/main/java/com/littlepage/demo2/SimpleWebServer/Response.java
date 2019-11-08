@@ -21,22 +21,27 @@ public class Response {
     public void sendStaticResource() {
         byte[] bytes = new byte[BUFFER_SIZE];
         FileInputStream fis = null;
-        File file = new File(HttpServer.WEB_ROOT,request.getUri());
-        try{
+        try {
+            File file = new File(HttpServer.WEB_ROOT,request.getUri());
             if(file.exists()){
                 fis = new FileInputStream(file);
-
-            }
-        }catch (FileNotFoundException e){
-            System.out.println(e.toString());
-        }finally {
-            if(fis!=null){
-                try {
-                    fis.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
+                int ch = fis.read(bytes,0,BUFFER_SIZE);
+                while (ch!=-1){
+                    output.write(bytes,0,ch);
+                    ch = fis.read(bytes,0,BUFFER_SIZE);
                 }
+            }else {
+                // file not found
+                String errorMessage = "HTTP/1.1 404 File Not Found\r\n" +
+                        "Content-Type: text/html\r\n" +
+                        "Content-Length: 23\r\n" +
+                        "\r\n" +
+                        "<h1>File Not Found</h1>";
+                output.write(errorMessage.getBytes());
             }
+
+        }catch (IOException e){
+
         }
 
     }

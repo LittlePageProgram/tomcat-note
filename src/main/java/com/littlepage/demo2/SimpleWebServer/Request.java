@@ -17,19 +17,16 @@ public class Request {
      * Read a set of characters from the socket
      */
     public void parse() {
-        StringBuffer req = new StringBuffer(1024*2);
-        int i=0;
         byte[] buffer = new byte[1024*2];
         try {
-            i = input.read(buffer);
+            int i = input.read(buffer);
+            if(i==-1) {
+                return;
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        for (int j=0;j<i;j++){
-            req.append((char) buffer[i]);
-        }
-        System.out.println(req.toString());
-        uri=parseUri(req.toString());
+        uri=parseUri(new String(buffer));
     }
 
     /**
@@ -38,7 +35,11 @@ public class Request {
      * @return
      */
     private String parseUri(String reqString) {
-        int index1,index2;
+        /**
+         * 打印请求输出
+         */
+        System.out.println(reqString);
+        int index1,index2 = 0;
         index1=reqString.indexOf(' ');
         if(index1!=-1){
             index2 = reqString.indexOf(' ',index1+1);
@@ -50,6 +51,6 @@ public class Request {
     }
 
     public String getUri() {
-        return null;
+        return uri;
     }
 }
