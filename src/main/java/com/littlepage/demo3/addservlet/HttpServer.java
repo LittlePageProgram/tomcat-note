@@ -23,6 +23,10 @@ public class HttpServer {
      * 一个中断命令
      */
     public static final String SHUTDOWN_COMMAND = "/SHUTDOWN";
+
+    /**
+     * 是否中断
+     */
     private boolean shutdown = false;
 
     /**
@@ -71,6 +75,7 @@ public class HttpServer {
                 // check if this is a request for a servlet or
                 // a static resource
                 // a request for a servlet begins with "/servlet/"
+                System.out.println(request.getUri());
                 if(request.getUri().startsWith("/servlet/")) {
                     ServletProcessor processor = new ServletProcessor();
                     processor.process(request, response);
@@ -84,8 +89,8 @@ public class HttpServer {
                 shutdown = request.getUri().equals(SHUTDOWN_COMMAND);
             } catch (IOException e) {
                 e.printStackTrace();
+                System.exit(1);
             }
-
         }
     }
 }

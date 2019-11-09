@@ -57,7 +57,6 @@ public class Response implements ServletResponse {
         }
     }
 
-    /** implementation of Servlet Response */
     @Override
     public String getCharacterEncoding() {
         return null;
@@ -72,6 +71,8 @@ public class Response implements ServletResponse {
     public ServletOutputStream getOutputStream() throws IOException {
         return null;
     }
+
+    /** implementation of Servlet Response */
 
     @Override
     public PrintWriter getWriter() throws IOException {
@@ -140,6 +141,5 @@ public class Response implements ServletResponse {
     public Locale getLocale() {
         return null;
     }
-
 
 }

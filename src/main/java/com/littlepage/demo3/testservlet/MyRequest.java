@@ -1,65 +1,14 @@
-package com.littlepage.demo3.addservlet;
+package com.littlepage.demo3.testservlet;
 
 import javax.servlet.*;
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.Enumeration;
 import java.util.Locale;
 import java.util.Map;
 
-public class Request implements ServletRequest {
-
-    private InputStream input;
-
-    private String uri;
-
-    public Request(InputStream input) {
-        this.input = input;
-    }
-
-    public String getUri() {
-        return uri;
-    }
-
-    /**
-     * 解析第二个参数
-     * @param reqString
-     * @return
-     */
-    private String parseUri(String reqString) {
-        /**
-         * 打印请求输出
-         */
-        int index1,index2 = 0;
-        index1=reqString.indexOf(' ');
-        if(index1!=-1){
-            index2 = reqString.indexOf(' ',index1+1);
-            if(index2>index1){
-                return  reqString.substring(index1+1,index2);
-            }
-        }
-        return null;
-    }
-
-    /**
-     * Read a set of characters from the socket
-     */
-    public void parse() {
-        //Read a set of characters from the socket
-        byte[] buffer = new byte[1024*2];
-        try {
-            int i = input.read(buffer);
-            if(i==-1) {
-                return;
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        uri=parseUri(new String(buffer));
-    }
-
+public class MyRequest implements ServletRequest {
     @Override
     public Object getAttribute(String s) {
         return null;
@@ -244,7 +193,4 @@ public class Request implements ServletRequest {
     public DispatcherType getDispatcherType() {
         return null;
     }
-
-
-    /** implementation of ServletRequest */
 }
