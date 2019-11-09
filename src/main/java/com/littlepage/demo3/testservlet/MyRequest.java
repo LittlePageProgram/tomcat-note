@@ -8,6 +8,10 @@ import java.util.Enumeration;
 import java.util.Locale;
 import java.util.Map;
 
+/**
+ * 单独测试ServletRequest接口
+ * 这边发现不能使用ServletRequest接口
+ */
 public class MyRequest implements ServletRequest {
     @Override
     public Object getAttribute(String s) {
