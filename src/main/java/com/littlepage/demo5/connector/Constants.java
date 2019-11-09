@@ -1,10 +1,7 @@
-package com.littlepage.demo5.addConnector;
+package com.littlepage.demo5.connector;
 
 import java.io.File;
 
-/**
- * 常量类
- */
 public class Constants {
 
     public static final String WEB_ROOT = System.getProperty("user.dir") + File.separator + "webroot";

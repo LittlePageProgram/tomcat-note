@@ -1,0 +1,20 @@
+分模块
+
+startup
+    -- Bootstrap 启动类
+
+core
+    -- ServletProcessor 和 StaticResourceProcessor
+
+connector
+    -- HttpConnector 连接器
+    -- HttpProcessor 处理器（支撑HttpConnector的连接）
+    -- HttpRequest 和 辅助类
+    -- HttpResponse 和 辅助类
+    -- Facade 类(HttpRequestFacade 和 HttpResponseFacade)
+    -- Constant 类
+
+和demo4相比，HttpServer类被分为2个，HttpConnector 和 HttpProcessor
+Request 被 HttpRequest 取代
+Response 被 HttpResponse 取代
+多出了更多类

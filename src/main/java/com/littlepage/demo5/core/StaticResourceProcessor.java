@@ -1,10 +1,10 @@
-package com.littlepage.demo5.addConnector;
+package com.littlepage.demo5.core;
+
+import com.littlepage.demo4.addFacade.Request;
+import com.littlepage.demo4.addFacade.Response;
 
 import java.io.IOException;
 
-/**
- * 处理静态资源请求
- */
 public class StaticResourceProcessor {
     public void process(Request request, Response response) {
         try{

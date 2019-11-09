@@ -1,4 +1,6 @@
-package com.littlepage.demo5.addConnector;
+package com.littlepage.demo5.connector;
+
+import com.littlepage.demo5.addConnector.HttpServer;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.ServletResponse;
@@ -6,23 +8,23 @@ import java.io.*;
 import java.util.Locale;
 
 /**
- * Response类
+ * HTTPResponse
  */
-public class Response implements ServletResponse {
+public class HttpResponse implements ServletResponse {
 
     private static  final int BUFFER_SIZE = 1024;
 
-    private Request request;
+    private HttpRequest request;
 
     private OutputStream output;
 
     private PrintWriter writer;
 
-    public Response(OutputStream output) {
+    public HttpResponse(OutputStream output) {
         this.output = output;
     }
 
-    public void setRequest(Request request) {
+    public void setRequest(HttpRequest request) {
         this.request = request;
     }
 
@@ -144,5 +146,4 @@ public class Response implements ServletResponse {
     public Locale getLocale() {
         return null;
     }
-
 }

@@ -1,5 +1,7 @@
-package com.littlepage.demo5.addConnector;
+package com.littlepage.demo5.core;
 
+
+import com.littlepage.demo4.addFacade.*;
 
 import javax.servlet.Servlet;
 import javax.servlet.ServletRequest;
@@ -11,7 +13,7 @@ import java.net.URLClassLoader;
 import java.net.URLStreamHandler;
 
 /**
- * ServletProcessor处理Servlet请求
+ * 处理Http请求
  */
 public class ServletProcessor {
     public void process(Request request, Response response) {
