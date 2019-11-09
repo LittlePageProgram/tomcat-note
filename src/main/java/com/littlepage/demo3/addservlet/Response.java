@@ -1,9 +1,11 @@
 package com.littlepage.demo3.addservlet;
 
+import javax.servlet.ServletOutputStream;
+import javax.servlet.ServletResponse;
 import java.io.*;
 import java.util.Locale;
 
-public class Response implements ServletResponse{
+public class Response implements ServletResponse {
 
     private static  final int BUFFER_SIZE = 1024;
 
@@ -57,22 +59,12 @@ public class Response implements ServletResponse{
 
     /** implementation of Servlet Response */
     @Override
-    public void flushBuffer() throws IOException {
-
-    }
-
-    @Override
-    public int getBufferSize() {
-        return 0;
-    }
-
-    @Override
     public String getCharacterEncoding() {
         return null;
     }
 
     @Override
-    public Locale getLocale() {
+    public String getContentType() {
         return null;
     }
 
@@ -82,11 +74,51 @@ public class Response implements ServletResponse{
     }
 
     @Override
-    public PrintWriter getWritter() {
-        //autoflush is true,println() will flush
-        //but print() will not
+    public PrintWriter getWriter() throws IOException {
+        // autoflush is true, println() will flush,
+        // but print() will not
         writer = new PrintWriter(output,true);
         return writer;
+    }
+
+    @Override
+    public void setCharacterEncoding(String s) {
+
+    }
+
+    @Override
+    public void setContentLength(int i) {
+
+    }
+
+    @Override
+    public void setContentLengthLong(long l) {
+
+    }
+
+    @Override
+    public void setContentType(String s) {
+
+    }
+
+    @Override
+    public void setBufferSize(int i) {
+
+    }
+
+    @Override
+    public int getBufferSize() {
+        return 0;
+    }
+
+    @Override
+    public void flushBuffer() throws IOException {
+
+    }
+
+    @Override
+    public void resetBuffer() {
+
     }
 
     @Override
@@ -100,28 +132,14 @@ public class Response implements ServletResponse{
     }
 
     @Override
-    public void resetBuffer() {
-
-    }
-
-    @Override
-    public void setBufferSize(int size) {
-
-    }
-
-    @Override
-    public void setContentLength(int length) {
-
-    }
-
-    @Override
-    public void setContentType(String type) {
-
-    }
-
-    @Override
     public void setLocale(Locale locale) {
 
     }
+
+    @Override
+    public Locale getLocale() {
+        return null;
+    }
+
 
 }

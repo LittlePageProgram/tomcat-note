@@ -1,5 +1,6 @@
 package com.littlepage.demo3.addservlet;
 
+import javax.servlet.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -8,7 +9,7 @@ import java.util.Enumeration;
 import java.util.Locale;
 import java.util.Map;
 
-public class Request implements ServletRequest{
+public class Request implements ServletRequest {
 
     private InputStream input;
 
@@ -59,39 +60,35 @@ public class Request implements ServletRequest{
         uri=parseUri(new String(buffer));
     }
 
+    
     /** implementation of ServletRequest */
     @Override
-    public Object getAttribute(String attribute) {
+    public Object getAttribute(String s) {
         return null;
     }
 
     @Override
-    public Enumeration getAttributeNames() {
+    public Enumeration<String> getAttributeNames() {
         return null;
     }
 
     @Override
-    public String getRealPath(String path) {
+    public String getCharacterEncoding() {
         return null;
     }
 
     @Override
-    public RequestDispatcher getRequestDispatcher(String path) {
-        return null;
-    }
+    public void setCharacterEncoding(String s) throws UnsupportedEncodingException {
 
-    @Override
-    public boolean isSecure() {
-        return false;
-    }
-
-    @Override
-    public String getCharaterEncoding() {
-        return null;
     }
 
     @Override
     public int getContentLength() {
+        return 0;
+    }
+
+    @Override
+    public long getContentLengthLong() {
         return 0;
     }
 
@@ -106,52 +103,27 @@ public class Request implements ServletRequest{
     }
 
     @Override
-    public Locale getLocale() {
+    public String getParameter(String s) {
         return null;
     }
 
     @Override
-    public Enumeration getLocales() {
+    public Enumeration<String> getParameterNames() {
         return null;
     }
 
     @Override
-    public String getParameter(String name) {
-        return null;
-    }
-
-    @Override
-    public Map getParameterMap() {
-        return null;
-    }
-
-    @Override
-    public Enumeration getParameterNames() {
-        return null;
-    }
-
-    @Override
-    public String[] getParaneterValues(String parameter) {
+    public String[] getParameterValues(String s) {
         return new String[0];
     }
 
     @Override
-    public String getProtoccol() {
+    public Map<String, String[]> getParameterMap() {
         return null;
     }
 
     @Override
-    public BufferedReader getReader() throws IOException {
-        return null;
-    }
-
-    @Override
-    public String getRemoteAddr() {
-        return null;
-    }
-
-    @Override
-    public String getRemoteHost() {
+    public String getProtocol() {
         return null;
     }
 
@@ -171,17 +143,109 @@ public class Request implements ServletRequest{
     }
 
     @Override
-    public void removeAttribute(String attribute) {
+    public BufferedReader getReader() throws IOException {
+        return null;
+    }
+
+    @Override
+    public String getRemoteAddr() {
+        return null;
+    }
+
+    @Override
+    public String getRemoteHost() {
+        return null;
+    }
+
+    @Override
+    public void setAttribute(String s, Object o) {
 
     }
 
     @Override
-    public void setAttribute(String key, Object value) {
+    public void removeAttribute(String s) {
 
     }
 
     @Override
-    public void setCharacterEncoding(String encoding) throws UnsupportedEncodingException {
-
+    public Locale getLocale() {
+        return null;
     }
+
+    @Override
+    public Enumeration<Locale> getLocales() {
+        return null;
+    }
+
+    @Override
+    public boolean isSecure() {
+        return false;
+    }
+
+    @Override
+    public RequestDispatcher getRequestDispatcher(String s) {
+        return null;
+    }
+
+    @Override
+    public String getRealPath(String s) {
+        return null;
+    }
+
+    @Override
+    public int getRemotePort() {
+        return 0;
+    }
+
+    @Override
+    public String getLocalName() {
+        return null;
+    }
+
+    @Override
+    public String getLocalAddr() {
+        return null;
+    }
+
+    @Override
+    public int getLocalPort() {
+        return 0;
+    }
+
+    @Override
+    public ServletContext getServletContext() {
+        return null;
+    }
+
+    @Override
+    public AsyncContext startAsync() throws IllegalStateException {
+        return null;
+    }
+
+    @Override
+    public AsyncContext startAsync(ServletRequest servletRequest, ServletResponse servletResponse) throws IllegalStateException {
+        return null;
+    }
+
+    @Override
+    public boolean isAsyncStarted() {
+        return false;
+    }
+
+    @Override
+    public boolean isAsyncSupported() {
+        return false;
+    }
+
+    @Override
+    public AsyncContext getAsyncContext() {
+        return null;
+    }
+
+    @Override
+    public DispatcherType getDispatcherType() {
+        return null;
+    }
+
+
 }
