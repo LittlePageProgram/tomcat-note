@@ -1,5 +1,6 @@
-package com.littlepage.demo3.addservlet;
+package com.littlepage.demo3;
 
+import com.littlepage.demo3.addservlet.Constants;
 
 import javax.servlet.Servlet;
 import javax.servlet.ServletRequest;
@@ -10,12 +11,9 @@ import java.net.URL;
 import java.net.URLClassLoader;
 import java.net.URLStreamHandler;
 
-/**
- * 处理Http请求
- */
-public class ServletProcessor {
-    public void process(Request request, Response response) {
-        String uri = request.getUri();
+public class TestClassLoader {
+    public static void main(String[] args) {
+        String uri = "/servlet/PrimitiveServlet";
         String servletName = uri.substring(uri.lastIndexOf("/")+1);
         URLClassLoader loader = null;
 
@@ -26,6 +24,7 @@ public class ServletProcessor {
             File classPath = new File(Constants.WEB_ROOT);
             // the forming of repository is taken from the
             // createClassLoader method in
+
             // org.apache.catalina.startup.ClassLoaderFactory
             String repository = (new URL("file",null,classPath.getCanonicalPath()+File.separator)).toString();
             // the code for forming the URL is taken from
@@ -42,14 +41,14 @@ public class ServletProcessor {
         }catch (ClassNotFoundException e) {
             System.out.println(e.toString());
         }
-        Servlet servlet = null;
-        try {
-            servlet = (Servlet) myClass.newInstance();
-            servlet.service((ServletRequest) request,(ServletResponse)response);
-        } catch (Exception e) {
-            System.out.println(e.toString());
-        } catch (Throwable e){
-            System.out.println(e.toString());
-        }
+//        Servlet servlet = null;
+//        try {
+//            servlet = (Servlet) myClass.newInstance();
+//            servlet.service((ServletRequest) request,(ServletResponse)response);
+//        } catch (Exception e) {
+//            System.out.println(e.toString());
+//        } catch (Throwable e){
+//            System.out.println(e.toString());
+//        }
     }
 }

@@ -1,0 +1,4 @@
+在这里，我们仅仅可以看到浏览器输出
+Hello. Roses are red.
+这个bug在之后的Demo会修复
+我们现在可以手动实现一个简单的servlet
