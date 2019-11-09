@@ -1,4 +1,4 @@
-package com.littlepage.demo3.addservlet;
+package com.littlepage.demo4.addFacade;
 
 
 import javax.servlet.Servlet;
@@ -43,12 +43,13 @@ public class ServletProcessor {
             System.out.println(e.toString());
         }
         Servlet servlet = null;
+        RequestFacade requestFacade = new RequestFacade(request);
+        ResponseFacade responseFacade = new ResponseFacade(response);
         try {
+
             servlet = (Servlet) myClass.newInstance();
-            servlet.service(request,response);
+            servlet.service((ServletRequest) requestFacade,(ServletResponse) responseFacade);
         } catch (Exception e) {
-            System.out.println(e.toString());
-        } catch (Throwable e){
             System.out.println(e.toString());
         }
     }

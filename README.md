@@ -8,6 +8,6 @@
 
 ### demo03 servlet容器的构建
 
-这边demo03有一个ServletRequest和ServletResponse的接口错误，
-我在demo03下新建一个包testservlet，里面的单独测试接口，发现接口implement后
-new出来是错误的
+### demo04 增加request和response的外观类，修复安全性漏洞
+
+### demo05 增加连接器

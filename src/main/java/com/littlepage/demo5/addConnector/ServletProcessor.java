@@ -1,4 +1,4 @@
-package com.littlepage.demo3.addservlet;
+package com.littlepage.demo5.addConnector;
 
 
 import javax.servlet.Servlet;
@@ -11,7 +11,7 @@ import java.net.URLClassLoader;
 import java.net.URLStreamHandler;
 
 /**
- * 处理Http请求
+ * ServletProcessor处理Servlet请求
  */
 public class ServletProcessor {
     public void process(Request request, Response response) {
@@ -43,12 +43,13 @@ public class ServletProcessor {
             System.out.println(e.toString());
         }
         Servlet servlet = null;
+        RequestFacade requestFacade = new RequestFacade(request);
+        ResponseFacade responseFacade = new ResponseFacade(response);
         try {
+
             servlet = (Servlet) myClass.newInstance();
-            servlet.service(request,response);
+            servlet.service((ServletRequest) requestFacade,(ServletResponse) responseFacade);
         } catch (Exception e) {
-            System.out.println(e.toString());
-        } catch (Throwable e){
             System.out.println(e.toString());
         }
     }
